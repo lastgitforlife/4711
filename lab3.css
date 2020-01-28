@@ -1,0 +1,110 @@
+#DirectoryInput{
+    margin: auto;
+    width: 75%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#ArtistDirectory{
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: auto;
+    width: 75%;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+    min-width: 250px;
+    max-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#GET-artist{
+    width: 60%;
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+
+#ADD-artist{
+    width: 35%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#DirectoryOutput{
+    margin: auto;
+    width: 50%;
+    min-width: 250px;
+    max-width: 450px;
+}
+
+#DirectoryOutput > div{
+    margin: auto;
+    width: 50%;
+    border: lightgrey 1px solid;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.Artist{
+    background-color: white;
+    padding-top: 3px;
+    text-align: center;
+    min-height: 80px;
+    min-width: 250px;
+    max-height: 120px;
+    max-width: 300px;
+}
+
+.Artist:hover{
+    background-color: whitesmoke;
+}
+
+.Artist > img{
+    width: 25%;
+    margin: 5px 2px;
+    border-radius: 4px;
+}
+
+.ArtistInfo{
+    width: 70%;
+    margin-top: 5%;
+    float:right;
+}
+
+.ArtistInfo > h3, p{
+    margin: 0;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ArtistInfo > p{
+    font-size: small;
+}
+
+#Add-Artist-Form{
+    text-align: center;
+    width: 100%;
+}
+
+#Add-Artist-Form input{
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    width: 75%;
+    border-radius: 3px;
+}
+
+#Add-Artist-Form input[type=button]{
+    width: 50%;
+}
+
+button{
+    width: 30%;
+    float: right;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: darkred;
+    width: 35%;
+}
