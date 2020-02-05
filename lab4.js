@@ -1,3 +1,6 @@
+let storageCount = 0;
+
+
 function addArtist(){
     try{
         let form = document.getElementById("Add-Artist-Form");
@@ -50,13 +53,14 @@ function newArtist() {
         artistDesc.textContent = desc;
         let deleteBtn= document.createElement("BUTTON");
         deleteBtn.textContent = "Delete";
-        deleteBtn.addEventListener("click", f => {artistDiv.remove()});
+        deleteBtn.addEventListener("click", f => {artistDiv.remove(); storageCount--;});
         artistDiv.appendChild(artistImg);
         artistDiv.appendChild(artistInfo);
         artistInfo.appendChild(artistName);
         artistInfo.appendChild(artistDesc);
         artistInfo.appendChild(deleteBtn);
         document.getElementById("DirectoryOutput").appendChild(artistDiv);
+        storageCount++;
     }catch(e){
         console.log("Error" + e);
     }
@@ -64,14 +68,8 @@ function newArtist() {
 
 function deleteParent(id){
     let idb = document.getElementById(id);
-    console.log(dib);
+    console.log(idb);
 }
-//
-// <div class="Artist">
-//     <img src="https://randomuser.me/api/portraits/med/women/2.jpg"  alt="Artist woman 2"/>
-//     <div class="ArtistInfo">
-//          <h3>Kim</h3>
-//          <p>Looking for art</p>
-//             <button></button>
-//     </div>
-// </div>
+
+let myStorage = window.localStorage;
+
