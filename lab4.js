@@ -135,7 +135,7 @@ function isIn(str1, str2){ // Checks to see if str1 is in str2.
     if(charStr1.length > charStr2.length) return(false);
     let lettersCorrect = 0; // How many letters from str1 found so far in a row in str2.
     for(let i = 0; i < charStr2.length; i++){
-        if(charStr1[lettersCorrect] === charStr2[i]) lettersCorrect++;
+        if(charStr1[lettersCorrect].toLowerCase() === charStr2[i].toLowerCase()) lettersCorrect++;
         else lettersCorrect = 0;
         if(lettersCorrect === charStr1.length) return(true);
     }
