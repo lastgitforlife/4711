@@ -118,13 +118,15 @@ function search(){ // Uses search bar to reveal relevant artists.
         persistentDataReAdder();
     }else{
         for(let i = storageCount; i > 0; i--){
-            let name = myStorage.getItem("ArtistName"+i);
-            if(isIn(who, name)){
-                let desc = myStorage.getItem("ArtistDesc"+i);
-                let img = myStorage.getItem("ArtistImg"+i);
-                let id = myStorage.getItem("ArtistId"+i);
-                newArtist(name, desc, img, id, false);
-            }
+            try{
+                let name = myStorage.getItem("ArtistName"+i);
+                if(isIn(who, name)){
+                    let desc = myStorage.getItem("ArtistDesc"+i);
+                    let img = myStorage.getItem("ArtistImg"+i);
+                    let id = myStorage.getItem("ArtistId"+i);
+                    newArtist(name, desc, img, id, false);
+                }
+            }catch{} // If it fails means no data in that memory slot.
         }
     }
 }
