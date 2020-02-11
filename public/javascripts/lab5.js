@@ -18,6 +18,7 @@ function addArtist(){
         let inputImg = document.createElement("INPUT");
         let inputSubmit = document.createElement("INPUT");
         form.id="Add-Artist-Form";
+        form.setAttribute("method", "POST");
         inputName.id = "AAF-name";
         inputName.setAttribute("type", "text");
         inputName.setAttribute("placeholder", "Artist name");
@@ -30,9 +31,9 @@ function addArtist(){
         inputImg.setAttribute("type", "text");
         inputImg.setAttribute("placeholder", "Artist Img");
         inputSubmit.id = "AAF-add";
-        inputSubmit.setAttribute("type", "button");
+        inputSubmit.setAttribute("type", "submit");
         inputSubmit.setAttribute("value", "Add");
-        inputSubmit.setAttribute("onClick", "newArtist()");
+        // inputSubmit.setAttribute("onClick", "newArtist()");
         form.appendChild(inputName);
         form.appendChild(inputDesc);
         form.appendChild(inputImg);
