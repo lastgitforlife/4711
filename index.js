@@ -6,6 +6,10 @@ let fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -26,12 +30,23 @@ app.get('/Lab5/Lab5.html', (req, res) => {
     res.sendFile(path.join(__dirname, "Lab5", "lab5.html"));
 });
 
-app.post('/Lab5/Lab5.html', (req, res) => {
-    fs.writeFile("test.txt", "test", (err) =>{
-        if(err) throw err;
-        console.log("File made");
-    });
-    res.json({username:'flavio'});
+app.post('/newArtist', (req, res) => {
+    try{
+        let name = req.body.name;
+        let desc = req.body.description;
+        let img = req.body.image;
+        console.log(name);
+        console.log(desc);
+        console.log(img);
+        fs.writeFile("test.txt", name, function(err){if(err)throw err;});
+    }catch(e){
+        console.log(e);
+    }
+    res.redirect(301, 'Lab5/Lab5.html');
+});
+
+app.post('/search', (req, res) => {
+
 });
 
 app.listen(3000, () => console.log("Server ready"));
