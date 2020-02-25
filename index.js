@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let path = require('path');
 let fs = require('fs');
+let jsonQC = require('./jsonQuickCommand');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,13 +33,8 @@ app.get('/Lab5/Lab5.html', (req, res) => {
 
 app.post('/newArtist', (req, res) => {
     try{
-        let name = req.body.name;
-        let desc = req.body.description;
-        let img = req.body.image;
-        console.log(name);
-        console.log(desc);
-        console.log(img);
-        fs.writeFile("test.txt", name, function(err){if(err)throw err;});
+        let newArtist = {"name": req.body.name, "desc": req.body.description, "img" : req.body.image};
+        jsonQC.addFile("test.txt", newArtist);
     }catch(e){
         console.log(e);
     }
@@ -46,7 +42,16 @@ app.post('/newArtist', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-
+    try{
+        let searchTerms = req.body.name;
+        let artist = [];
+        // console.log(searchTerms);
+        let data = jsonQC.readFile("test.txt");
+        console.log(data);
+    }catch(e){
+        console.log(e);
+    }
+    res.redirect(301, "Lab5/Lab5.html");
 });
 
 app.listen(3000, () => console.log("Server ready"));
