@@ -21,6 +21,19 @@ function readFile(file){
     return JSON.parse(data);
 }
 
+function deleteObject(file, object){
+    let data = readFile(file);
+    for(let i = 0; i < data.length; i++){
+        if(data[i] === object){
+            data.splice(i);
+            fs.writeFile(file, JSON.stringify(data), function(err){if(err)throw err;});
+            return true;
+        }
+    }
+    return false;
+}
+
 
 exports.addFile = addFile;
 exports.readFile = readFile;
+exports.deleteObject = deleteObject;

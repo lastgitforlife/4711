@@ -41,7 +41,8 @@ app.get('/Lab4/Lab4.html', (req, res) => {
 });
 
 app.get('/Lab5/Lab5.html', (req, res) => {
-    res.sendFile(path.join(__dirname, "Lab5", "lab5.html"));
+    // res.sendFile(path.join(__dirname, "Lab5", "lab5.html"));
+    res.render('home', {pageTitle: 'Home Page', heading: 'Welcom'});
 });
 
 app.post('/newArtist', (req, res) => {
@@ -60,7 +61,9 @@ app.post('/search', (req, res) => {
         let artist = [];
         console.log(searchTerms);
         let data = jsonQC.readFile("test.txt");
-        console.log(data);
+        console.log(data[1]);
+        jsonQC.deleteObject("test.txt", data[1]);
+        console.log(jsonQC.readFile('test.txt'));
     }catch(e){
         console.log(e);
     }
