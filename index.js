@@ -5,8 +5,8 @@ let path = require('path');
 let fs = require('fs');
 let jsonQC = require('./jsonQuickCommand');
 let expressHbs = require('express-handlebars');
-let artists = [];
 let artistFile = "test.txt";
+let artists = jsonQC.readFile(artistFile);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -51,6 +51,8 @@ app.post('/newArtist', (req, res) => {
     try{
         let newArtist = {"name": req.body.name, "desc": req.body.description, "img" : req.body.image, "id": Math.random()};
         jsonQC.addFile(artistFile, newArtist);
+        let data = jsonQC.readFile(artistFile);
+        data.then(data => artists.push(newArtist)).catch(e => console.log(e));
     }catch(e){
         console.log(e);
     }
@@ -58,20 +60,21 @@ app.post('/newArtist', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-    try{
         let searchTerms = req.body.name;
         artists = [];
         console.log(searchTerms);
         let data = jsonQC.readFile(artistFile);
-        for(let i = 0; i < data.length; i++){
-            if(data[i].name.includes(searchTerms)){
-                artists.push(data[i]);
+        data.then(data => {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].name.toLowerCase().includes(searchTerms.toLowerCase())) {
+                    artists.push(data[i]);
+                }
             }
-        }
-    }catch(e){
-        console.log(e);
-    }
-    res.redirect(301, "Lab5/Lab5.html");
+            res.redirect(301, "Lab5/Lab5.html");
+        }).catch(e => {
+            console.log(e);
+            res.redirect(301, "Lab5/Lab5.html");
+        });
 });
 
 app.post('/delete', (req, res) =>{
