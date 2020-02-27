@@ -5,6 +5,8 @@ let path = require('path');
 let fs = require('fs');
 let jsonQC = require('./jsonQuickCommand');
 let expressHbs = require('express-handlebars');
+let artists = [];
+let artistFile = "test.txt";
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -42,12 +44,12 @@ app.get('/Lab4/Lab4.html', (req, res) => {
 
 app.get('/Lab5/Lab5.html', (req, res) => {
     // res.sendFile(path.join(__dirname, "Lab5", "lab5.html"));
-    res.render('home', {pageTitle: 'Home Page', heading: 'Welcom'});
+    res.render('home', {pageTitle: 'Home Page', heading: 'Welcome', artists: artists});
 });
 
 app.post('/newArtist', (req, res) => {
     try{
-        let newArtist = {"name": req.body.name, "desc": req.body.description, "img" : req.body.image};
+        let newArtist = {"name": req.body.name, "desc": req.body.description, "img" : req.body.image, "id": Math.random()};
         jsonQC.addFile("test.txt", newArtist);
     }catch(e){
         console.log(e);
@@ -58,14 +60,29 @@ app.post('/newArtist', (req, res) => {
 app.post('/search', (req, res) => {
     try{
         let searchTerms = req.body.name;
-        let artist = [];
+        artists = [];
         console.log(searchTerms);
-        let data = jsonQC.readFile("test.txt");
-        console.log(data[1]);
-        jsonQC.deleteObject("test.txt", data[1]);
-        console.log(jsonQC.readFile('test.txt'));
+        let data = jsonQC.readFile(artistFile);
+        for(let i = 0; i < data.length; i++){
+            if(data[i].name.includes(searchTerms)){
+                artists.push(data[i]);
+            }
+        }
     }catch(e){
         console.log(e);
+    }
+    res.redirect(301, "Lab5/Lab5.html");
+});
+
+app.post('/delete', (req, res) =>{
+    let id = req.body.id;
+    for(let i = 0; i < artists.length; i++){
+        if(artists[i].id.toString() === id){
+            jsonQC.deleteObject(artistFile, artists[i]);
+            artists.splice(i, 1);
+            console.log("Deleted");
+            break;
+        }
     }
     res.redirect(301, "Lab5/Lab5.html");
 });

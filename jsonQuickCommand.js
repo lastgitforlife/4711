@@ -24,8 +24,8 @@ function readFile(file){
 function deleteObject(file, object){
     let data = readFile(file);
     for(let i = 0; i < data.length; i++){
-        if(data[i] === object){
-            data.splice(i);
+        if(JSON.stringify(data[i]) === JSON.stringify(object)){
+            data.splice(i, 1);
             fs.writeFile(file, JSON.stringify(data), function(err){if(err)throw err;});
             return true;
         }

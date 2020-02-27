@@ -9,4 +9,17 @@
     </div>
 </section>
 <section id="DirectoryOutput">
+    {{#each artists}}
+        <div class="Artist">
+            <img src="{{this.img}}" />
+            <div class="ArtistInfo">
+                <h3>{{this.name}}</h3>
+                <p>{{this.desc}}</p>
+                <form action="/delete" method="post">
+                    <input name="id" type="hidden" value="{{this.id}}">
+                    <input class= "Deletebutton" type="submit" name="delete" value="delete">
+                </form>
+            </div>
+        </div>
+    {{/each}}
 </section>

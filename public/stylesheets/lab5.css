@@ -101,7 +101,7 @@
     width: 30%;
 }
 
-button{
+.Deletebutton{
     width: 30%;
     float: right;
     background-color: red;
@@ -109,7 +109,7 @@ button{
     border-radius: 10px;
 }
 
-button:hover{
+.Deletebutton:hover{
     background-color: darkred;
     width: 35%;
 }
