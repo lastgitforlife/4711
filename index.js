@@ -50,7 +50,7 @@ app.get('/Lab5/Lab5.html', (req, res) => {
 app.post('/newArtist', (req, res) => {
     try{
         let newArtist = {"name": req.body.name, "desc": req.body.description, "img" : req.body.image, "id": Math.random()};
-        jsonQC.addFile("test.txt", newArtist);
+        jsonQC.addFile(artistFile, newArtist);
     }catch(e){
         console.log(e);
     }
@@ -80,7 +80,6 @@ app.post('/delete', (req, res) =>{
         if(artists[i].id.toString() === id){
             jsonQC.deleteObject(artistFile, artists[i]);
             artists.splice(i, 1);
-            console.log("Deleted");
             break;
         }
     }

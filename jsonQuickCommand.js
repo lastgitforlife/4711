@@ -1,6 +1,10 @@
 let fs = require('fs');
 
+// Made by Garrett H. Tailby
+// Feb 27/2020
+
 function addFile(file, dataToAdd){
+    //Adds json data to a json list to a file.
     fs.readFile(file, function(err, data){
         try{
             let jsondata = JSON.parse(data);
@@ -17,11 +21,13 @@ function addFile(file, dataToAdd){
 }
 
 function readFile(file){
+    // Read file and return with a JSON Object(array).
     let data = fs.readFileSync(file);
     return JSON.parse(data);
 }
 
 function deleteObject(file, object){
+    // Read JSON file and delete JSON object from it.
     let data = readFile(file);
     for(let i = 0; i < data.length; i++){
         if(JSON.stringify(data[i]) === JSON.stringify(object)){
