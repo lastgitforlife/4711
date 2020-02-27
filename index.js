@@ -89,4 +89,4 @@ app.post('/delete', (req, res) =>{
     res.redirect(301, "Lab5/Lab5.html");
 });
 
-app.listen(3000, () => console.log("Server ready"));
+app.listen(process.env.PORT || 3000);
