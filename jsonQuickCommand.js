@@ -17,9 +17,8 @@ function addFile(file, dataToAdd){
 }
 
 function readFile(file){
-    fs.readFile(file, function(err, data){
-        return data;
-    })
+    let data = fs.readFileSync(file);
+    return JSON.parse(data);
 }
 
 

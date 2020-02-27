@@ -4,12 +4,25 @@ let bodyParser = require('body-parser');
 let path = require('path');
 let fs = require('fs');
 let jsonQC = require('./jsonQuickCommand');
+let expressHbs = require('express-handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.engine(
+    'hbs',
+    expressHbs({
+        layoutDir: 'views/layouts/',
+        defaultLayout: 'main-layout',
+        extname: 'hbs'
+    })
+);
+
+app.set('view engine', 'hbs');
+app.set('views', 'views');
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -45,7 +58,7 @@ app.post('/search', (req, res) => {
     try{
         let searchTerms = req.body.name;
         let artist = [];
-        // console.log(searchTerms);
+        console.log(searchTerms);
         let data = jsonQC.readFile("test.txt");
         console.log(data);
     }catch(e){
