@@ -6,7 +6,8 @@ let fs = require('fs');
 let jsonQC = require('./jsonQuickCommand');
 let expressHbs = require('express-handlebars');
 let artistFile = "test.txt";
-let artists = jsonQC.readFile(artistFile);
+let artists = [];
+jsonQC.readFile(artistFile).then(data => artists = data);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
