@@ -45,9 +45,3 @@ function addArtist(){
         document.getElementById("DirectoryOutput").appendChild(form);
     }
 }
-
-document.onreadystatechange = () => {
-    if(document.readyState === "complete"){
-        persistentDataReAdder();
-    }
-};
