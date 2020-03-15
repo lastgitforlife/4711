@@ -2,14 +2,14 @@ let db = require('../util/database');
 
 // Add a single individual to the database
 function addPeople(data) {
-    let sql = `Insert into people (id, name, about, imageURL) values
+    let sql = `Insert into people (name, about, imageURL) values
     ('${data.name}', '${data.about}', '${data.imageURL}')`;
-    db.execute(sql);
+    console.log(db.execute(sql));
 }
 
 // Gets all the individuals in the database
 function getAllPeople() {
-    return db.execute('Select * from people');
+    return db.execute('Select * from people') ;
 }
 
 // Gets a specific individual from the database
