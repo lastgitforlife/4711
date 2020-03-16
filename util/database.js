@@ -4,11 +4,11 @@ const mysql = require('mysql');
 const pool = mysql.createPool({
     // change when connected to online database
     connectionLimit: 100, // Important?
-    host: 'localhost',
-    port: "3308",
-    user: 'root',
-    database: 'people',
-    password: ''
+    host: 'remotemysql.com',
+    port: "3306",
+    user: 'o3x7ybeI2M',
+    database: 'o3x7ybeI2M',
+    password: 'OZH3RljirQ'
 });
 
 async function execute(data){
