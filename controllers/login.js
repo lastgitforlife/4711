@@ -14,10 +14,10 @@ exports.login = (req, response, next) =>{
             }
         }).catch(err =>{
             console.log(err);
-            res.render('login', {js:"failedLogin.js", css: 'login.css'});
+            response.render('login', {js:"failedLogin.js", css: 'login.css'});
         })
     }catch(err){
-        res.render('login', {js:"failedLogin.js", css: 'login.css'});
+        response.render('login', {js:"failedLogin.js", css: 'login.css'});
     }
 };
 
