@@ -1,0 +1,49 @@
+body{
+    background-color: beige;
+}
+
+div{
+    text-align: center;
+}
+
+form{
+    text-align: center;
+}
+
+input{
+    width: 50%;
+    min-width: 25%;
+    height: 25px;
+    min-height: 15%;
+    border: 0;
+    border-radius: 4px;
+}
+
+#formDivider{
+    margin: auto;
+    padding: 0;
+    width:50%;
+}
+
+#submit{
+    margin: 25px;
+    width: 45%;
+    height: 45px;
+    color: white;
+    background-color: orange;
+}
+
+#submit:hover{
+    width: 50%;
+    height: 50px;
+    background-color: darkorange;
+}
+
+h2{
+    color: gray;
+}
+
+hr{
+    width: 80%;
+    color: whitesmoke;
+}

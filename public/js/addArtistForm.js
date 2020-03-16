@@ -1,12 +1,3 @@
-const myStorage = window.localStorage;
-let storageCount = 0;
-
-try{ // see if there is artists int storage.
-    storageCount = Number(myStorage.getItem("storageCount"));
-}catch{
-    console.log("No retrieved artists from storage.");
-}
-
 function addArtist(){
     try{
         let form = document.getElementById("Add-Artist-Form");

@@ -22,14 +22,17 @@ app.use(bodyParser.urlencoded({ extended: false })); // middleware
 // parse application/json
 app.use(bodyParser.json()); // middleware
 
-let peopleRoutes = require('./routes/peoples');
+let loginRoutes = require('./routes/login');
+let artistRoutes = require('./routes/artist');
 
 app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/', function (req,res) {
-    res.render('login', { pageTitle: 'People App', heading: 'Welcome to People App'});
+    res.render('login', { pageTitle: 'Login', css: "login.css"});
 });
 
-app.use(peopleRoutes);
+app.use(loginRoutes);
+
+app.use(artistRoutes);
 
 app.listen(process.env.PORT ||4000, () => console.log('Server ready @ port 4000'));

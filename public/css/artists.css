@@ -101,7 +101,7 @@
     width: 30%;
 }
 
-button{
+.Deletebutton{
     width: 30%;
     float: right;
     background-color: red;
@@ -109,7 +109,28 @@ button{
     border-radius: 10px;
 }
 
-button:hover{
+.Deletebutton:hover{
     background-color: darkred;
     width: 35%;
+}
+
+.banner{
+    width: 100%;
+    height: 35px;
+    background-color: darkorange;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+.banner form{
+    float: right;
+    margin: auto;
+    padding-right: 25px;
+    padding-top: 7px;
+}
+
+.banner form input{
+    background-color: lightgray;
+    height: 25px;
 }

@@ -17,8 +17,13 @@ function getPeople(id) {
     return db.execute("Select * from people where id = " + id);
 }
 
+function deletePerson(id){
+    return db.execute("DELETE from people where id = " + id);
+}
+
 module.exports = {
     add : addPeople,
     getall : getAllPeople,
-    getpeople: getPeople
+    getpeople: getPeople,
+    delete : deletePerson
 };

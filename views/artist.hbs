@@ -1,7 +1,8 @@
+{{>logoutBanner}}
 <section id="DirectoryInput">
     <div id="ArtistDirectory">
         <h1>Artist Directory</h1>
-        <form action="/people/add" method="get">
+        <form action="/artist/search" method="post">
             <input id="GET-artist" type="text" name="name">
             <input id="ADD-artist" type="button" value="Add artist" onclick="addArtist()">
             <input id="SEARCH-artist" type="submit" value="Search">
@@ -11,13 +12,13 @@
 <section id="DirectoryOutput">
     {{#each artists}}
         <div class="Artist">
-            <img src="{{this.img}}" />
+            <img src="{{this.imageURL}}" />
             <div class="ArtistInfo">
                 <h3>{{this.name}}</h3>
-                <p>{{this.desc}}</p>
-                <form action="/peoples/add" method="post">
-                    <input name="id" type="hidden" value="{{this.id}}">
-                    <input class= "Deletebutton" type="submit" name="delete" value="delete">
+                <p>{{this.about}}</p>
+                <form action="/artist/delete" method="post">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input class= "Deletebutton" type="submit" value="delete">
                 </form>
             </div>
         </div>
